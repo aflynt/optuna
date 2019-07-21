@@ -13,12 +13,9 @@ def objective(trial):
     y = trial.suggest_uniform('y',-10,10)
     return (x-2)**2 + (y-1)**2
 
-
 #study = optuna.create_study(study_name=sn, storage=studyloc)
 study = optuna.create_study(study_name=sn, storage=studyloc, load_if_exists=True)
 #study.optimize(objective, n_trials=nt)
-
-
 
 
 print('\n=== dataframe   ===')
