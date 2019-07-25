@@ -24,12 +24,15 @@ fz = open('fz_curve.csv', 'w')
 for n in range(101):
   pt = nc.PointAt(2*n/100.0).Encode()
 
-  #print("{},{},{}".format(pt['X'], pt['Y'], 0.0))
   fy.write("{},{},{}\n".format(pt['X'], pt['Y'],     0.0))
   fz.write("{},{},{}\n".format(pt['X'],     0.0, pt['Y']))
 
+fy.close()
+fz.close()
+
 
 '''
+#print("{},{},{}".format(pt['X'], pt['Y'], 0.0))
 points = nc.Points
 print("\nprinting {}".format('number of points'))
 print(len(points))
@@ -47,9 +50,7 @@ for i in range(len(points)):
   print("xyzw = {} {} {} {}".format(pt['X'], pt['Y'],
     pt['Z'], pt['W']))
   #print("xyzw = {}".format(pt))
-'''
 
-'''
 center = rhino3dm.Point3d(1,2,3)
 arc = rhino3dm.Arc(center, 10, 1)
 nc = arc.ToNurbsCurve()

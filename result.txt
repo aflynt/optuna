@@ -1,0 +1,256 @@
+Running ncTref.sim
+Starting remote server: ssh linux4 echo "Remote PID : $$"; exec  /raid/linux8/apps/starccm/14.02.012-R8/STAR-CCM+14.02.012-R8/star/bin/starccm+ -power -podkey KhqnxnyyHstD7KSWi1dn4g -mpi intel -cpubind -licpath 1999@flex.cd-adapco.com -on linux4:60 -server -rsh ssh /home/flyntga/git/optuna/ncTref.sim 
+Starting STAR-CCM+ parallel server
+MPI Distribution : Intel MPI-2018.1
+Host 0 -- linux4 -- Ranks 0-59
+Process rank 0 linux4 39126
+Total number of processes : 60
+
+Simcenter STAR-CCM+ 2019.1.1 Build 14.02.012 (linux-x86_64-2.12/gnu7.1-r8)
+
+License build date: 09 November 2018
+This version of the code requires license version 2019.02 or greater.
+Checking license file: 1999@flex.cd-adapco.com
+Checking license file: 1999@linux9
+1 copy of ccmppower checked out from 1999@flex.cd-adapco.com
+Feature ccmppower expires in 342 days
+Thu Jul 25 14:34:16 2019
+
+Server::start -host linux4.jade.jacobs.com:47827
+Loading: /home/flyntga/git/optuna/ncTref.sim
+Loading module: CadModeler
+Started Parasolid modeler version 30.01.204
+Loading module: MeshingSurfaceRepair
+Loading module: StarSweptMesher
+Loading module: SegregatedFlowModel
+Saved by:
+  Simcenter STAR-CCM+ 2019.1.1 Build 14.02.012 (linux-x86_64-2.12/gnu7.1-r8) Serial 
+Playing macro: /home/flyntga/git/optuna/setgeom_mesh_run.java
+No region-based volume meshers selected.
+Executing parts-based mesh operations
+----------------------------------------
+Executing Mesh Operation Directed Mesh
+----------------------------------------
+Checking mesh-CAD association...done.  No problems found.
+Creating the 2.5d surface slice before remeshing...
+   Done.
+----------------------------------------
+Preparing surface for surface meshing in Parts: 
+----------------------------------------
+
+----------------------------------------
+finished preparing surface for surface meshing CPU Time: 0.01, Wall Time: 0.00, Memory: 1739.76 MB
+----------------------------------------
+Projecting to CAD geometry
+----------------------------------------
+Executing Surface Remesher
+----------------------------------------
+initial number of faces: 12
+
+Tri Quality     Faces    Percent
+  < 0.001           0       0.0
+  < 0.01            0       0.0
+  < 0.05            0       0.0
+  < 0.1             0       0.0
+  < 0.2             0       0.0
+  < 0.3             0       0.0
+  < 0.4             0       0.0
+  < 0.5             0       0.0
+  < 0.6             0       0.0
+  < 0.7             0       0.0
+  < 0.8             0       0.0
+  < 0.9             2     100.0
+  < 1.0             2     100.0
+Worst quality is 0.8284
+   
+starting: Apply Global Limits
+
+   Tri Quality     Faces    Percent
+     < 0.001           0       0.0
+     < 0.01            0       0.0
+     < 0.05            0       0.0
+     < 0.1             0       0.0
+     < 0.2             0       0.0
+     < 0.3             0       0.0
+     < 0.4             0       0.0
+     < 0.5             0       0.0
+     < 0.6             0       0.0
+     < 0.7             0       0.0
+     < 0.8             0       0.0
+     < 0.9           128     100.0
+     < 1.0           128     100.0
+   Worst quality is 0.8284
+   
+starting: Improve Grading
+
+   Tri Quality     Faces    Percent
+     < 0.001           0       0.0
+     < 0.01            0       0.0
+     < 0.05            0       0.0
+     < 0.1             0       0.0
+     < 0.2             0       0.0
+     < 0.3             0       0.0
+     < 0.4             0       0.0
+     < 0.5             0       0.0
+     < 0.6             0       0.0
+     < 0.7             0       0.0
+     < 0.8             0       0.0
+     < 0.9          2048     100.0
+     < 1.0          2048     100.0
+   Worst quality is 0.8284
+   
+starting: Improve Quality
+
+   Post-processing
+      no intersections found
+      0 faces with quality below 0.05
+
+QUAD Quality    Faces    Percent
+  < 0.001           0       0.0
+  < 0.01            0       0.0
+  < 0.05            0       0.0
+  < 0.1             0       0.0
+  < 0.2             0       0.0
+  < 0.3             0       0.0
+  < 0.4             0       0.0
+  < 0.5             0       0.0
+  < 0.6             0       0.0
+  < 0.7             0       0.0
+  < 0.8             0       0.0
+  < 0.9             0       0.0
+  < 1.0           900     100.0
+Worst QUAD quality is 1
+final number of triangular faces: 0 and quads: 900
+Aligned mesh created (with QUADS) for 1 surface out of a total of 6 surfaces.
+Aligned quad mesh created for 1 candidate quad surface
+No thin surfaces removed.
+----------------------------------------
+Surface Remesher Completed: CPU Time: 0.42, Wall Time: 0.72, Memory: 1744.31 MB
+----------------------------------------
+
+Executing the 2d mesher...
+
+
+Preparing surface for 2d meshing...
+Fixing non-manifold surface, CPU Time: 0.01, Wall Time: 0.00, Memory: 1744.31 MB
+Surface is valid for volume meshing, CPU Time: 0.05, Wall Time: 0.13, Memory: 1744.31 MB
+
+  done,  CPU Time: 0.07, Wall Time: 0.15, Memory: 1744.31 MB
+User set distribution function to be  GEOMETRIC PROGRESSION
+----------------------------------------
+Executing Prism Layer Subsurface
+----------------------------------------
+Number of procs used: 1
+Global Input surface contains 3840 faces, and 1922 vertices 
+   done, CPU Time: 0.00, Wall Time: 0.00, Memory: 1744.31 MB
+ Building preprocessor done 
+Computing vertex normals
+ Exchanged the remote active status done
+Computing the normals done
+   done, CPU Time: 0.01, Wall Time: 0.02, Memory: 1744.31 MB
+Computing Vertex normals done
+Computing surface proximity
+   done, CPU Time: 0.01, Wall Time: 0.02, Memory: 1744.31 MB
+Constraining boundary vertices
+   done, CPU Time: 0.00, Wall Time: 0.00, Memory: 1744.31 MB
+
+Iteration 1:
+-------------
+Initializing final vertex normals
+Creating subsurface (updating 122 of 122 active vertices)
+Checking 120 face-based validity metrics
+   found 0 invalid faces
+Checking vertex intersections for all vertices
+
+Using edge recovery to fix prism layer boundaries...
+Recovering edges... Edges recover info:  0   0
+ Grow affected faces......
+Remeshing surface near recovered edges...
+Surface remeshed.  No faces added or removed.
+CPU Time: 0.41, Wall Time: 1.32, Memory: 1774.86 MB
+ Finished two levels of remeshing 
+Edge recovery was successful.
+CPU Time: 0.45, Wall Time: 1.40, Memory: 1774.86 MB
+
+Checking true subsurface intersections for all vertices
+ no intersections 
+   found 0 intersecting vertices
+Checking subsurface orientation!!
+
+Iterations successful
+
+Combining interface maps
+   done, CPU Time: 0.00, Wall Time: 0.00, Memory: 1774.86 MB
+Marking zero layer regions
+   found 0 collapsed faces
+   found 0 edges bounding collapsed regions
+   found 0 vertices bounding collapsed regions
+Global Subsurface contains 3840 faces, and 1922 vertices 
+----------------------------------------
+Prism Layer Subsurface Completed: CPU Time: 0.72, Wall Time: 1.94, Memory: 1774.86 MB
+----------------------------------------
+ Generating tri/quad core mesh...
+Created 900 cells
+----------------------------------------
+Executing Prism Layer Extrusion
+----------------------------------------
+Marking vertices, edges and faces to extrude
+   found 0 zero layer subsurface vertices
+   done, CPU Time: 0.00, Wall Time: 0.02, Memory: 1774.86 MB
+Creating extrusion layer mesh
+   default number of layers = 4
+   default stretching = 1.5
+   done, CPU Time: 0.00, Wall Time: 0.00, Memory: 1774.86 MB
+ chopping percentage set to 50
+Extrusion mesh contains:
+   240 cells
+   1024 faces
+   1393 edges
+   610 vertices
+----------------------------------------
+Prism Layer Extrusion Completed: CPU Time: 0.03, Wall Time: 0.05, Memory: 1774.86 MB
+----------------------------------------
+
+2d mesh generation completed.  CPU Time: 0.85, Wall Time: 2.22, Memory: 1774.86 MB
+
+Custom stretching function defined. Hence, smooth transition will be applied to the portions of sweep that do not have custom stretching function.
+
+Sweeping part nc...
+Smoothing the target surface mesh
+Smoothing the target surface mesh
+Number of Cells in - nc : 57000
+----------------------------------------
+Total Number of Cells in nc : 57000
+----------------------------------------
+Meshing Completed: CPU Time: 27.58, Wall Time: 56.31, Memory: 1858.17 MB
+----------------------------------------
+Transferring 1 volume mesh part(s) to region(s):
+  part=nc to region=Region
+Loading/configuring connectivity (old|new partitions: 1|60)
+  Region (index 0): 57000 cells, 166660 faces, 61455 verts.
+Configuring finished
+Reading material property database "/raid/linux8/apps/starccm/14.02.012-R8/STAR-CCM+14.02.012-R8/star/data/props.mdb"...
+Converting mesh into finite volume representation in Region Region
+
+ Partitioning Region (57000 cells)
+Region: Interpolating solution onto new mesh... 
+ Interpolating cell data
+ Storages being interpolated are : [ W_Velocity VolumeFraction U_Velocity TurbulentViscosity TurbulentKineticEnergy V_Velocity TurbulentDissipationRate ApparentPressureGradient EffectiveViscosity Density Pressure VoidFraction Solidity]
+ Interpolating boundary data
+ Storages being interpolated are : [ WallShear WallFunctionUplus Pressure Density TurbulentKineticEnergy WallFunctionUSlipFactor FaceFlux SlipVelocity TurbulentDissipationRate V_Velocity U_Velocity Ustar VolumeFraction W_Velocity]
+ Storages being interpolated are : [ W_Velocity VolumeFraction U_Velocity V_Velocity TurbulentDissipationRate FaceFlux TurbulentKineticEnergy Density Pressure]
+ Storages being interpolated are : [ W_Velocity VolumeFraction U_Velocity V_Velocity TurbulentDissipationRate FaceFlux TurbulentKineticEnergy Density Pressure]
+ Storages being interpolated are : [ W_Velocity VolumeFraction U_Velocity V_Velocity TurbulentDissipationRate FaceFlux TurbulentKineticEnergy Density Pressure]
+ Storages being interpolated are : [ W_Velocity VolumeFraction U_Velocity V_Velocity TurbulentDissipationRate FaceFlux Pressure Density TurbulentKineticEnergy FlowAngle]
+  Time taken to interpolate the data  = 2.05889
+Finished Interpolation.
+Mesh Operation Directed Mesh complete. CPU Time: 32.39, Wall Time: 66.05, Memory: 1868.80 MB
+Volume Meshing Pipeline Completed: CPU Time: 32.48, Wall Time: 66.23, Memory: 1868.80 MB
+	Cells: 57000	Faces: 166660	Vertices: 61455
+Re-partitioning
+     Iteration     Continuity     X-momentum     Y-momentum     Z-momentum            Tke            Tdr      objective           sa/a           sb/b           su/u 
+           602   3.734637e-01   3.386985e+00   1.922373e+00   1.913470e+00   8.306958e-01   2.998039e+00   8.565741e+00   4.231320e-01   3.723516e-01   7.770258e+00 
+Stopping criterion Maximum Steps satisfied.
+Saving: /home/flyntga/git/optuna/ncT008.sim... complete (25.658MB in 3.7955s).
+Design STAR-CCM+ simulation completed
+Server process exited with code : 0

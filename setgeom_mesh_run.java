@@ -3,6 +3,8 @@
 package macro;
 
 import java.util.*;
+import java.io.*;
+
 
 import star.common.*;
 import star.base.neo.*;
@@ -14,15 +16,40 @@ public class setgeom_mesh_run extends StarMacro {
 
   public void execute() {
 
-    //exec_chg_curves();
-    //exec_remesh_run();
-    //exec_save();
+    exec_read_case_num();
+    exec_chg_curves();
+    exec_remesh_run();
     exec_plot_scenes();
+    //exec_sudoSave();
+    exec_save();
+  }
+
+  String pwd = "/home/flyntga/git/optuna/";
+  int prob_num = 0;
+  String caseName = "ncT"+String.format("%03d", prob_num);  // "ncT003"
+
+  private void exec_read_case_num() {
+    //Simulation sim = getActiveSimulation();
+
+    // read case number into global variable "prob_num"
+    try {
+        //BufferedReader br = new BufferedReader(new FileReader("/home/flyntga/git/optuna/prob_num"));
+        BufferedReader br = new BufferedReader(new FileReader(pwd+"prob_num"));
+        String line = br.readLine();
+        prob_num = Integer.parseInt(line);
+        caseName = "ncT"+String.format("%03d", prob_num);
+        //System.out.println("got problem number: " + prob_num);
+        //System.out.println("case name is: " + caseName);
+        br.close();
+    }
+    catch (Exception e) {
+        System.out.println("file not found!");
+        //sim.println("file not found!");
+    }
   }
 
   private void exec_chg_curves() {
 
-    String pwd = "/home/flyntga/git/optuna/";
     String skname1 = "Sketch3D 1";
     String skname2 = "Sketch3D 2";
     String cf_fy   = "fy_curve.csv";
@@ -46,18 +73,20 @@ public class setgeom_mesh_run extends StarMacro {
   private void exec_save() {
 
     Simulation sim = getActiveSimulation();
-    sim.saveState("/home/flyntga/git/optuna/ncT009.sim");
+    sim.saveState(pwd+caseName+".sim");
   }
+
+  private void exec_sudoSave() {
+     System.out.println("sudo saving case as: "+pwd+caseName+".sim");
+  }
+
 
   private void exec_plot_scenes() {
 
-    String pwd = "/home/flyntga/git/optuna/";
-    String prob = "ncT002_";
-
-    plot_scene( "alpha_xy"     , pwd+prob+  "alpha_xy"      +".png"  );
-    plot_scene( "beta_xy"      , pwd+prob+  "beta_xy"       +".png"  );
-    plot_scene( "velocity_nep" , pwd+prob+  "velocity_nep"  +".png"  );
-    plot_scene( "velocity_xy"  , pwd+prob+  "velocity_xy"   +".png"  );
+    plot_scene( "alpha_xy"     , pwd + caseName + "_" + "alpha_xy"     + ".png"  );
+    plot_scene( "beta_xy"      , pwd + caseName + "_" + "beta_xy"      + ".png"  );
+    plot_scene( "velocity_nep" , pwd + caseName + "_" + "velocity_nep" + ".png"  );
+    plot_scene( "velocity_xy"  , pwd + caseName + "_" + "velocity_xy"  + ".png"  );
   }
 
   void plot_scene(String scene_name, String save_name)
