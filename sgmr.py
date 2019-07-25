@@ -12,13 +12,12 @@ sn = 'sgmr' # study name
 studyloc = 'sqlite:///sgmr.db' # database
 nt = 3  # number of trials
 
-prob_num = 0
-LCR  = 6.0
-Hin  = 3.0
-Hout = 1.0
 
 def objective(trial):
     # suggest variables
+    LCR  = 6.0
+    Hin  = 3.0
+    Hout = 1.0
     x1 = trial.suggest_uniform( 'x1',        1e-6, 1.0*LCR/3.0 - 1e-6)
     x2 = trial.suggest_uniform( 'x1', 1.0*LCR/3.0, 2.0*LCR/3.0 - 1e-6)
     x3 = trial.suggest_uniform( 'x1', 2.0*LCR/3.0, 3.0*LCR/3.0 - 1e-6)
@@ -46,9 +45,8 @@ def objective(trial):
     fz.close()
 
     # write case number to file
-    prob_num += 1
     with open('prob_num', 'w') as wf:
-      wf.write(str(prob_num))
+      wf.write(str(trial.number))
 
     # run ccm+ process
     outfile = open('result.txt', 'w')
