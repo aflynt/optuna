@@ -10,17 +10,16 @@ import subprocess
 # global variable works
 sn = 'sgmr' # study name
 studyloc = 'sqlite:///sgmr.db' # database
-nt = 3  # number of trials
-
+nt = 10  # number of trials
 
 def objective(trial):
     # suggest variables
     LCR  = 6.0
     Hin  = 3.0
     Hout = 1.0
-    x1 = trial.suggest_uniform( 'x1',        1e-6, 1.0*LCR/3.0 - 1e-6)
-    x2 = trial.suggest_uniform( 'x1', 1.0*LCR/3.0, 2.0*LCR/3.0 - 1e-6)
-    x3 = trial.suggest_uniform( 'x1', 2.0*LCR/3.0, 3.0*LCR/3.0 - 1e-6)
+    x1 = trial.suggest_uniform( 'x1',  0.02 * LCR, 1.0*LCR/3.0 - 1e-6)
+    x2 = trial.suggest_uniform( 'x2', 1.0*LCR/3.0, 2.0*LCR/3.0 - 1e-6)
+    x3 = trial.suggest_uniform( 'x3', 2.0*LCR/3.0, 0.98*LCR)
     y2 = trial.suggest_uniform( 'y2', Hout, Hin)
 
     # make list of 5 points to create nurbs curve
@@ -54,10 +53,15 @@ def objective(trial):
     outfile.close()
 
     # read file to get objective value
-    cp = subprocess.run(["tail", "-n", "1", "last_obj_table_300.csv" ], stdout=subprocess.PIPE )
+    resfile = 'last_obj_table_300.csv'
+    cp = subprocess.run(["tail", "-n", "1", resfile ], stdout=subprocess.PIPE )
     value = str(cp.stdout, 'utf-8').rstrip()
     result = [x.strip() for x in value.split(',')][0]
     result = float(result)
+
+    # copy results for saving
+    outf = 'trial'+str(trial.number)+'_data.csv'
+    cp = subprocess.run(["cp", resfile, outf ], stdout=subprocess.PIPE )
 
     return result
 
@@ -80,44 +84,46 @@ z = tv.tolist()
 #print(tv)
 
 # params
-x = vals[:,5]
-print(x)
-
-y = vals[:,6]
-print(y)
+x1 = vals[:,5]
+x2 = vals[:,6]
+x3 = vals[:,7]
+y2 = vals[:,8]
 
 # make scatter plot
 fig, ax = plt.subplots()
-scatter = ax.scatter(x, y, c=z, s=z, cmap="Spectral")
-ax.set(xlabel='x', ylabel='y',title='Trial Results')
+scatter = ax.scatter(x1, x2, c=z, s=z, cmap="Spectral")
+ax.set(xlabel='x1', ylabel='x2',title='Trial Results')
 ax.grid()
 plt.show()
 
 
 # make regular plots
-plt.subplot(2,1,1)
-plt.plot(x, z, 'r.')
+plt.subplot(4,1,1)
+plt.plot(x1, z, 'r.')
 plt.title('Trial Results')
-plt.ylabel('Z vs X')
+plt.ylabel('Z vs x1')
 plt.grid()
 
-plt.subplot(2,1,2)
-plt.plot(y, z, 'b.')
+plt.subplot(4,1,2)
+plt.plot(x2, z, 'b.')
 plt.xlabel('parameters')
-plt.ylabel('Z vs Y')
+plt.ylabel('Z vs x2')
+plt.grid()
+
+plt.subplot(4,1,3)
+plt.plot(x3, z, 'g.')
+plt.xlabel('parameters')
+plt.ylabel('Z vs x3')
+plt.grid()
+
+plt.subplot(4,1,4)
+plt.plot(y2, z, 'm.')
+plt.xlabel('parameters')
+plt.ylabel('Z vs y2')
 plt.grid()
 
 plt.show()
 
-
-
-#plt.plot(x, tv, 'rs', y, tv, 'b^')
-#plt.show()
-
-
-
-
-print('\ntrue best value is = {}, {}\n'.format(2, 1))
 
 print('\n=== best_params ===')
 print(study.best_params)

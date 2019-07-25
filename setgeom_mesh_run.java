@@ -87,6 +87,7 @@ public class setgeom_mesh_run extends StarMacro {
     plot_scene( "beta_xy"      , pwd + caseName + "_" + "beta_xy"      + ".png"  );
     plot_scene( "velocity_nep" , pwd + caseName + "_" + "velocity_nep" + ".png"  );
     plot_scene( "velocity_xy"  , pwd + caseName + "_" + "velocity_xy"  + ".png"  );
+    plot_scene( "Vector"       , pwd + caseName + "_" + "vector"       + ".png"  );
   }
 
   void plot_scene(String scene_name, String save_name)
