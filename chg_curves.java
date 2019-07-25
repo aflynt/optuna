@@ -16,7 +16,7 @@ public class chg_curves extends StarMacro {
 
   private void execute0() {
 
-    String pwd = "/home/flyntga/git/rhino3dm/samples/python/";
+    String pwd = "/home/flyntga/git/optuna/";
     String skname1 = "Sketch3D 1";
     String skname2 = "Sketch3D 2";
     String cf_fy   = "fy_curve.csv";
