@@ -1,6 +1,7 @@
 # Byte-compiled / optimized / DLL files
 *db
 *png
+data/
 *sim
 *sim~
 *csv
