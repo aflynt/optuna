@@ -58,4 +58,3 @@ MACROF="setgeom_mesh_run.java"
 #$CCM $POWER -batch -on $MACHINES $WD/$SIMFILE
 #$CCM_EXEC $POWER -batch -on $MACHINES $RSH $WD/$SIMFILE
 $CCM_EXEC $POWER -batch $MACROF -on $MACHINES $RSH $WD/$SIMFILE
-
