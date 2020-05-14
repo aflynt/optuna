@@ -10,7 +10,7 @@ import subprocess
 # global variable works
 sn = 'sgmr' # study name
 studyloc = 'sqlite:///sgmr.db' # database
-nt = 300 # number of trials
+nt = 1 # number of trials
 
 def objective(trial):
     # suggest variables
